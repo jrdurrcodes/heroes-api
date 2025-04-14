@@ -1,0 +1,5 @@
+node_modules/
+*=lock.json
+app/config/dbconfig.js
+
+
