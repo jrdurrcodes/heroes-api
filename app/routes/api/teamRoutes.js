@@ -9,7 +9,7 @@ router.get('/', (req, res)=> {
     dao.findAll(res, dao.table)
 })
 
-router.get('/fran/:team', (req,res)=> {
+router.get('/team/:team', (req, res)=> {
     dao.findHeroesByTeam(res, dao.table, req.params.team)
 })
 

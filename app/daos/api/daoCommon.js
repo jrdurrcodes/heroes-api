@@ -1,5 +1,6 @@
 // basic queries to db
 const con = require('../config/dbconfig')
+const { sort } = require('./api/heroDao')
 
 const dao = {
     findAll: (res, table)=> {

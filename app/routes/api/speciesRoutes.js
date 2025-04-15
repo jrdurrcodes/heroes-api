@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const route = require('../../daos/api/SpeciesRoute')
+const route = require('../../daos/api/speciesDao')
 
 // findAll
 // localhost:3000/api/hero 

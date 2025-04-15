@@ -1,4 +1,4 @@
-const con = require('../../config/dbDConfig')
+const con = require('../../config/dbconfig')
 
 const heroDao = {
     table: 'hero',
@@ -18,7 +18,7 @@ const heroDao = {
                         res.json(rows)
                     }
                     } else {
-                        console.log(`dao error: ${table}`, error)
+                        console.log(`DAO ERROR: ${table}`, error)
                     }
                 })
             )
