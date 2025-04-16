@@ -1,3 +1,4 @@
+
 // basic queries to db
 const con = require('../config/dbconfig')
 const { sort } = require('./api/heroDao')
@@ -37,7 +38,7 @@ const dao = {
     },
     sortGeneral: (res, table)=> {
         con.query(
-            `SELECT * FROM ${table} ORDER BY ${table};`,
+            `SELECT * FROM ${table} order by ${table};`,
             (error, rows)=> {
                 if (!error) {
                     if (rows.length === 1) {
@@ -50,8 +51,7 @@ const dao = {
                 }
             }
         )
-    },
     }
-
+}
 
 module.exports = dao

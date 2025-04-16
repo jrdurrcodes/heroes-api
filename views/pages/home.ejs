@@ -1,15 +1,39 @@
 <%- include('../partials/header') %>
 
-    <main class="main" id="homeMain">
-        <div class="container">
-            <figure class="figure home-figure">
-                <img src="http://via.placeholder.com/250x350" alt="image of <%= heroName %>" class="img-fluid image figure-img home-img d-block mx-auto" />
-                <figcaption class="figure-caption"></figcaption>
-                    <%= message %>
-                </figcaption>
-            </figure>
-            
+<main class="main" id="heroSingleMain">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h2>Powers</h2>
+                
+            </div>
+            <div class="col-md-7">
+                <img src="https://placehold.co/50x50" alt="placeholder img" class="img-fluid image" />
+            </div>
+            <div class="col-md-2">
+                <%- include('../partials/heroAside') %>
+            </div>
         </div>
-    </main>
+    </div>
+</main>
+
+<%- include('../partials/footer') %><%- include('../partials/header') %>
+
+<main class="main" id="heroSingleMain">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h2>Powers</h2>
+                
+            </div>
+            <div class="col-md-7">
+                <img src="https://placehold.co/50x50" alt="placeholder img" class="img-fluid image" />
+            </div>
+            <div class="col-md-2">
+                <%- include('../partials/heroAside') %>
+            </div>
+        </div>
+    </div>
+</main>
 
 <%- include('../partials/footer') %>

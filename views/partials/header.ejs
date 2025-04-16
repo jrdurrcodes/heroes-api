@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oooh+Baby&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Gothic&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <title>title</title>
-</head>
-<body>
+    <%- include('../partials/header') %>
 
-    <header class="header" id="header">
-        <div class="container">
-            <h1><%= name %></h1>
-            <nav class="nav" id="topNav">
-                <a href="/" class="nav-link top-nav-link">home</a>
-                <a href="/heroes" class="nav-link top-nav-link">all heroes</a>
-            </nav>
+<main class="main" id="heroMain">
+    <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <div class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-4">
+                    <% data.forEach(hero => { %>
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://placehold.co/300x180"alt="hero image" class="img-fluid image card-img-top" />
+                                <div class="card-body">
+                                    <h2 class="card-title">
+                                        <% if (hero.hero_name == null) { %>
+                                            <%= hero.first_name %> <%= hero.last_name %>
+                                        <% } else { %>
+                                            <%= hero.hero_name %>
+                                        <% } %>
+                                    </h2>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/heroes/<%= hero.hero_id %>" class="card-link">view more</a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="col-2">
+                <%- include('../partials/heroAside') %>
+            </div>
         </div>
-    </header>
+    </div>
+</main>
+
+<%- include('../partials/footer') %>
