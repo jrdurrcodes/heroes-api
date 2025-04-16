@@ -3,7 +3,7 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('axios')
-const PORT = process.env.PORT || 3000
+const port = process.env.port || 3000
 
 // 2
 router.use(express.static('public'))
@@ -21,15 +21,18 @@ endpoints.forEach(endpoint => {
 let heroAsideData = []
 let heroCount = 0
 
-axios.get(`http://localhost:${PORT}/api/hero/sort`)
-.then(resp => heroAsideData = resp.data)
+axios.get(`http://localhost:${port}/api/hero/sort`)
+.then(resp => {
+    heroAsideData = resp.data
+    heroCount = resp.data.length
+})
 
 
-axios.get(`http:localhost:${PORT}/apit/hero`)
-    .then(resp => {
-        heroAsideData = resp.data
-        heroCount = resp.data.length
-    })
+
+axios.get(`http://localhost:${port}/api/hero`)
+.then(resp => count = resp.data.length)
+
+
 
 // 3 
 // router.get(path, callback function)
@@ -37,7 +40,7 @@ router.get('/', (req, res)=> {
 
     let randomHero = {}
     let message = ''
-    const url = `http://localhost:${PORT}/api/hero`
+    const url = `http://localhost:${port}/api/hero`
 
     axios.get(url)
     .then(resp => {
@@ -77,13 +80,13 @@ router.get('/', (req, res)=> {
 // hero page
 router.get('/heroes', (req, res)=> {
 
-    const url = `http://localhost:${PORT}/api/hero`
+    const url = `http://localhost:${port}/api/hero`
 
     axios.get(url)
     .then(resp => {
         res.render('pages/hero', {
             title: 'All Heroes',
-            name: 'Heroes',
+            name: 'SUPER HERO AND SUPER VILLAIN',
             data: resp.data,
             asideData: heroAsideData
         })
@@ -95,12 +98,9 @@ router.get('/heroes/:id', (req, res)=> {
 
     const id = req.params.id 
     // let heroPowers = []
-    const url = `http://localhost:${PORT}/api/hero/${id}`
+    const url = `http://localhost:${port}/api/hero/${id}`
 
-    // const powerUrl = `http://localhost:${PORT}/api/hero/${id}/power`
-
-    // axios.get(powerUrl)
-    // .then(resp => heroPowers = resp.data)
+    
 
     axios.get(url)
     .then(resp => {
@@ -111,7 +111,26 @@ router.get('/heroes/:id', (req, res)=> {
             name: heroName,
             data: resp.data,
             asideData: heroAsideData,
-            // heroPowers
+            count
+        })
+    })
+})
+
+// subpages
+const subData = ['power', 'franchise', 'team', 'species']
+
+subData.forEach(dataPoint => {
+    
+    router.get(`/${dataPoint}`, (req, res) => {
+        const url = `http://localhost:${port}/api/${dataPoint}`
+
+        axios.get(url)
+        .then(resp => {
+            res.render('pages/allData', {
+                title: dataPoint,
+                name: `All ${dataPoint}`,
+                data: resp.data
+            })
         })
     })
 })

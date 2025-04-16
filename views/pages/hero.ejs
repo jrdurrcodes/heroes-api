@@ -8,12 +8,12 @@
                     <% data.forEach(hero => { %>
                         <div class="col">
                             <div class="card h-100">
-                                <img src="https://placehold.co/300x180" alt="hero image" class="img-fluid image card-img-top" />
+                                <img src="https://placehold.co/300x180"alt="hero image" class="img-fluid image card-img-top" />
                                 <div class="card-body">
-                                    <h2 class="card-title">
+                                    <h2 class="card-title text-light">
                                         <% if (hero.hero_name == null) { %>
                                             <%= hero.first_name %> <%= hero.last_name %>
-                                        <%} else { %>
+                                        <% } else { %>
                                             <%= hero.hero_name %>
                                         <% } %>
                                     </h2>
@@ -23,7 +23,7 @@
                                 </div>
                             </div>
                         </div>
-                    <%}) %>
+                    <% }) %>
                 </div>
             </div>
             <div class="col-2">
